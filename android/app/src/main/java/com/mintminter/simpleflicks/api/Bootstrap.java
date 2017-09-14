@@ -1,4 +1,4 @@
-package com.mintminter.simpleflicks.common;
+package com.mintminter.simpleflicks.api;
 
 /**
  * Created by Irene on 9/12/17.
