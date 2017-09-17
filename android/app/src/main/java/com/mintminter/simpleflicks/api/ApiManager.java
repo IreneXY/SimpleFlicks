@@ -1,11 +1,13 @@
 package com.mintminter.simpleflicks.api;
 
+import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
+import com.mintminter.simpleflicks.util.Common;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -18,7 +20,7 @@ public class ApiManager {
     public void getPlayingList(String language, int page, String region, final ApiCallback apiCallback){
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        params.put("api_key", Bootstrap.APIKEY);
+        params.put("api_key", Bootstrap.MOVIEDBAPIKEY);
         if(!TextUtils.isEmpty(language)) {
             params.put("language", language);
         }
@@ -32,7 +34,7 @@ public class ApiManager {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, String res) {
                         // called when response HTTP status is "200 OK"
-                        Log.i("INFO", res);
+                        Log.i("@getPlayingList res = ", res);
                         MovieContext.PlayingList playlist = new MovieContext.PlayingList();
                         playlist.loadFromString(res);
                         apiCallback.setPlayingList(playlist);
@@ -50,7 +52,7 @@ public class ApiManager {
     public void getTrailer(int videoID, String language, final ApiCallback apiCallback){
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        params.put("api_key", Bootstrap.APIKEY);
+        params.put("api_key", Bootstrap.MOVIEDBAPIKEY);
         if(!TextUtils.isEmpty(language)) {
             params.put("language", language);
         }
@@ -59,10 +61,17 @@ public class ApiManager {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, String res) {
                         // called when response HTTP status is "200 OK"
-                        Log.i("INFO", res);
-                        MovieContext.PlayingList playlist = new MovieContext.PlayingList();
-                        playlist.loadFromString(res);
-                        apiCallback.setPlayingList(playlist);
+                        Log.i("@getTrailer res = ", res);
+                        MovieContext.VideoList videoList = new MovieContext.VideoList();
+                        videoList.loadFromString(res);
+                        if(videoList != null && videoList.trailers!= null && videoList.trailers.size() > 0){
+                            for(MovieContext.Trailer t : videoList.trailers){
+                                if(t.isTrailer && t.isInYoutube){
+                                    apiCallback.setTrailer(t);
+                                    break;
+                                }
+                            }
+                        }
                     }
 
                     @Override

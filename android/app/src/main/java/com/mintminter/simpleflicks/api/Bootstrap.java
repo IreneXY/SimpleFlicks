@@ -3,6 +3,7 @@ package com.mintminter.simpleflicks.api;
 import android.content.Context;
 import android.util.Log;
 
+import com.mintminter.simpleflicks.BuildConfig;
 import com.mintminter.simpleflicks.R;
 import com.mintminter.simpleflicks.util.Common;
 
@@ -11,7 +12,8 @@ import com.mintminter.simpleflicks.util.Common;
  */
 
 public class Bootstrap {
-    public static final String APIKEY = "141552688f99dd1ec82085ec46cfecb7";
+    public static final String MOVIEDBAPIKEY = BuildConfig.MOVIEDBAPIKEY;
+    public static final String GOOGLEAPIKEY = BuildConfig.GOOGLEAPIKEY;
     public static final String API_SECURE_BASE_URL = "https://api.themoviedb.org/3";
     public static final String IMAGE_SECURE_BASE_URL = "https://image.tmdb.org/t/p/";
     public static final String YOUTUBE_BASE_URL = "https://www.youtube.com/watch";

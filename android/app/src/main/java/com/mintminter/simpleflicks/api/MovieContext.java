@@ -148,5 +148,44 @@ public class MovieContext {
             type = trailerJson.optString("type");
             isTrailer = TYPE_TRAILER.equals(type);
         }
+
+        public void loadFromString(String result){
+            try {
+                JSONObject trailerJson = new JSONObject(result);
+                loadFromJson(trailerJson);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static class VideoList{
+        public int id;
+        ArrayList<Trailer> trailers = new ArrayList<>();
+
+        public void loadFromJson(JSONObject videosJson){
+            id = videosJson.optInt("id", -1);
+            JSONArray results = videosJson.optJSONArray("results");
+            if(results != null){
+                int len = results.length();
+                for(int i = 0; i < len; i++){
+                    JSONObject trailerJson = results.optJSONObject(i);
+                    if(trailerJson != null) {
+                        Trailer trailer = new Trailer();
+                        trailer.loadFromJson(trailerJson);
+                        trailers.add(trailer);
+                    }
+                }
+            }
+        }
+
+        public void loadFromString(String result){
+            try {
+                JSONObject videosJson = new JSONObject(result);
+                loadFromJson(videosJson);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

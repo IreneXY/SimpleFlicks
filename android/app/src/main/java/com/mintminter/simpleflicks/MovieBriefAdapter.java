@@ -1,6 +1,7 @@
 package com.mintminter.simpleflicks;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
@@ -10,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mintminter.simpleflicks.api.ApiCallback;
+import com.mintminter.simpleflicks.api.ApiManager;
 import com.mintminter.simpleflicks.api.Bootstrap;
 import com.mintminter.simpleflicks.api.MovieContext;
 import com.mintminter.simpleflicks.util.Common;
@@ -27,10 +30,12 @@ public class MovieBriefAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     private Context mContext;
     private ArrayList<MovieContext.Movie> mMovies;
+    private ApiCallback mCallback;
 
-    public MovieBriefAdapter(Context context, ArrayList<MovieContext.Movie> movies){
+    public MovieBriefAdapter(Context context, ArrayList<MovieContext.Movie> movies, ApiCallback callback){
         mContext = context;
         mMovies = movies;
+        mCallback = callback;
     }
 
     @Override
@@ -72,16 +77,18 @@ public class MovieBriefAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         private ImageView mPoster;
         private TextView mTitle;
         private TextView mDescription;
+        private View mItemView;
 
         public MovieBriefViewHolder(View itemView) {
             super(itemView);
             mPoster = (ImageView) itemView.findViewById(R.id.item_movie_poster);
             mTitle = (TextView) itemView.findViewById(R.id.item_movie_title);
             mDescription = (TextView) itemView.findViewById(R.id.item_movie_description);
+            mItemView = itemView;
         }
 
         public void bind(int position){
-            MovieContext.Movie movie = mMovies.get(position);
+            final MovieContext.Movie movie = mMovies.get(position);
             mTitle.setText(movie.title);
             mDescription.setText(movie.overview);
             String tag = (String) mPoster.getTag();
@@ -96,7 +103,14 @@ public class MovieBriefAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                         .placeholder(R.mipmap.ic_launcher)
                         .into(mPoster);
             }
-
+            mItemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent detailIntent = new Intent(mContext, MovieDetailActivity.class);
+                    detailIntent.putExtra(Common.EXTRA_MOVIETITLE, movie.title);
+                    mContext.startActivity(detailIntent);
+                }
+            });
         }
     }
 
@@ -105,6 +119,8 @@ public class MovieBriefAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         private ImageView mBackdrop;
         private TextView mTitle;
         private TextView mDescription;
+        private ImageView mPlay;
+        private View mItemView;
 
         public BackdropViewHolder(View itemView){
             super(itemView);
@@ -112,16 +128,24 @@ public class MovieBriefAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             mBackdrop.setAlpha(0.9f);
             mTitle = (TextView) itemView.findViewById(R.id.item_backdrop_title);
             mDescription = (TextView) itemView.findViewById(R.id.item_backdrop_description);
+            mPlay = (ImageView) itemView.findViewById(R.id.item_backdrop_play);
+            mItemView = itemView;
         }
 
         public void bind(int position){
-            MovieContext.Movie movie = mMovies.get(position);
+            final MovieContext.Movie movie = mMovies.get(position);
             Picasso.with(mContext)
                     .load(Bootstrap.getBackdropUrl(mContext, movie.backdrop_path))
                     .placeholder(R.mipmap.ic_launcher)
                     .into(mBackdrop);
             mTitle.setText(movie.title);
             mDescription.setText(movie.overview);
+            mPlay.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    new ApiManager().getTrailer(movie.id, "en_US", mCallback);
+                }
+            });
         }
     }
 }

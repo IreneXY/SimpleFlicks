@@ -1,14 +1,15 @@
 package com.mintminter.simpleflicks;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.mintminter.simpleflicks.api.ApiCallback;
 import com.mintminter.simpleflicks.api.ApiManager;
 import com.mintminter.simpleflicks.api.MovieContext;
+import com.mintminter.simpleflicks.util.Common;
 
 public class MainActivity extends AppCompatActivity implements ApiCallback{
 
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements ApiCallback{
 
     @Override
     public void setPlayingList(MovieContext.PlayingList playList) {
-        mMovieList.setAdapter(new MovieBriefAdapter(this, playList.movies));
+        mMovieList.setAdapter(new MovieBriefAdapter(this, playList.movies, this));
     }
 
     @Override
@@ -41,6 +42,10 @@ public class MainActivity extends AppCompatActivity implements ApiCallback{
 
     @Override
     public void setTrailer(MovieContext.Trailer trailer) {
-
+        if(trailer != null){
+            Intent youtubeIntent = new Intent(this, YoutubeActivity.class);
+            youtubeIntent.putExtra(Common.EXTRA_YOUTUBEVIDEOID, trailer.key);
+            startActivity(youtubeIntent);
+        }
     }
 }
