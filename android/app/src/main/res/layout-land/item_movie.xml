@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/moviebrief">
+
+    <ImageView
+        android:id="@+id/item_movie_poster"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:layout_marginRight="3dp"
+        android:tag="backdrop"/>
+
+    <LinearLayout
+        style="@style/div.vlist"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="3dp">
+        <TextView
+            style="@style/div.h2"
+            android:id="@+id/item_movie_title" />
+
+        <TextView
+            style="@style/div.p"
+            android:layout_marginTop="@dimen/margin_mid"
+            android:id="@+id/item_movie_description" />
+
+    </LinearLayout>
+
+</LinearLayout>

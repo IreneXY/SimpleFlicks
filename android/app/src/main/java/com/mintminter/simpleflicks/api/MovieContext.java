@@ -30,9 +30,9 @@ public class MovieContext {
         public int vote_count;
         public int id;
         public boolean video;
-        public float vote_average;
+        public double vote_average;
         public String title;
-        public float popularity;
+        public double popularity;
         public String poster_path;
         public String original_language;
         public String original_title;
@@ -47,9 +47,9 @@ public class MovieContext {
             vote_count = movieJson.optInt("vote_count", 0);
             id = movieJson.optInt("id", -1);
             video = movieJson.optBoolean("video", false);
-            vote_average = BigDecimal.valueOf(movieJson.optDouble("vote_average", 0.0)).floatValue();
+            vote_average = movieJson.optDouble("vote_average", 0.0);
             title = movieJson.optString("title", "");
-            popularity = BigDecimal.valueOf(movieJson.optDouble("popularity", 0.0)).floatValue();
+            popularity = movieJson.optDouble("popularity", 0.0);
             poster_path = movieJson.optString("poster_path","");
             original_language = movieJson.optString("original_language","");
             original_title = movieJson.optString("original_title","");
@@ -119,5 +119,34 @@ public class MovieContext {
 
         }
 
+    }
+
+    public static class Trailer{
+        public static final String TYPE_TEASER = "Teaser";
+        public static final String TYPE_TRAILER = "Trailer";
+
+        public String id;
+        public String iso_639_1;
+        public String iso_3166_1;
+        public String key;
+        public String name;
+        public String site;
+        public int size;
+        public String type;
+        public boolean isInYoutube;
+        public boolean isTrailer;
+
+        public void loadFromJson(JSONObject trailerJson){
+            id = trailerJson.optString("id", "");
+            iso_639_1 = trailerJson.optString("iso_639_1", "");
+            iso_3166_1 = trailerJson.optString("iso_3166_1", "");
+            key = trailerJson.optString("key", "");
+            name = trailerJson.optString("name", "");
+            site = trailerJson.optString("site", "");
+            isInYoutube = "youtube".equals(site.toLowerCase());
+            size = trailerJson.optInt("size", -1);
+            type = trailerJson.optString("type");
+            isTrailer = TYPE_TRAILER.equals(type);
+        }
     }
 }

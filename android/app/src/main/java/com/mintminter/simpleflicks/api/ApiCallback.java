@@ -7,4 +7,5 @@ package com.mintminter.simpleflicks.api;
 public interface ApiCallback {
     void setPlayingList(MovieContext.PlayingList playList);
     void setFailure(int statusCode, String res);
+    void setTrailer(MovieContext.Trailer trailer);
 }

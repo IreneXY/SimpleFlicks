@@ -46,4 +46,32 @@ public class ApiManager {
                 }
         );
     }
+
+    public void getTrailer(int videoID, String language, final ApiCallback apiCallback){
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        params.put("api_key", Bootstrap.APIKEY);
+        if(!TextUtils.isEmpty(language)) {
+            params.put("language", language);
+        }
+
+        client.get(Bootstrap.getTrailerURL(videoID), params, new TextHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, String res) {
+                        // called when response HTTP status is "200 OK"
+                        Log.i("INFO", res);
+                        MovieContext.PlayingList playlist = new MovieContext.PlayingList();
+                        playlist.loadFromString(res);
+                        apiCallback.setPlayingList(playlist);
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, String res, Throwable t) {
+                        // called when response HTTP status is "4XX" (eg. 401, 403, 404)
+                        apiCallback.setFailure(statusCode, res);
+                    }
+                }
+        );
+
+    }
 }
