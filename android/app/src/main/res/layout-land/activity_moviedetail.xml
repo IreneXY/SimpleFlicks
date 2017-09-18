@@ -53,6 +53,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/margin_small"/>
 
+
                 </LinearLayout>
 
                 <TextView

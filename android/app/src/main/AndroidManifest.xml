@@ -23,7 +23,7 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".MovieDetailActivity"
-            android:theme="@style/AppTheme.toolbar" />
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

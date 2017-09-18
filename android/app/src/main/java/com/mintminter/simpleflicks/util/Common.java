@@ -19,7 +19,7 @@ public class Common {
     public static final double THRESHOLD_HIGHRATING = 5.0;
 
     public static final String EXTRA_YOUTUBEVIDEOID = "youtubevideoid";
-    public static final String EXTRA_MOVIETITLE = "movietitle";
+    public static final String EXTRA_MOVIE = "movie";
 
     public static String getString(Context context, int stringID){
         return context.getResources().getString(stringID);

@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/textH1</item>
+        <item name="android:textColorSecondary">@color/textH2</item>
     </style>
 
     <style name="AppTheme.splash" parent="AppTheme">
@@ -32,19 +34,28 @@
         <item name="android:orientation">vertical</item>
     </style>
 
-    <style name="div.h1" parent="div">
+    <style name="div.text" parent="div">
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="div.h1" parent="div.text">
         <item name="android:textColor">@color/textH1</item>
         <item name="android:textSize">@dimen/text_h1</item>
     </style>
 
-    <style name="div.h2" parent="div">
+    <style name="div.h2" parent="div.text">
         <item name="android:textColor">@color/textH2</item>
         <item name="android:textSize">@dimen/text_h2</item>
     </style>
 
-    <style name="div.p" parent="div">
+    <style name="div.p" parent="div.text">
         <item name="android:textColor">@color/textP</item>
         <item name="android:textSize">@dimen/text_p</item>
+    </style>
+
+    <style name="div.p.sub" parent="div.text">
+        <item name="android:textColor">@color/textSub</item>
+        <item name="android:textSize">@dimen/text_sub</item>
     </style>
 
     <style name="moviebrief" parent="div.hlist">

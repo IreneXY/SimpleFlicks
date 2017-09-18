@@ -76,6 +76,34 @@ public class MovieContext {
                 e.printStackTrace();
             }
         }
+
+        public String toString(){
+            JSONObject json = new JSONObject();
+            try {
+                json.put("vote_count", vote_count);
+                json.put("id",id);
+                json.put("video",video);
+                json.put("vote_average", vote_average);
+                json.put("title",title);
+                json.put("popularity",popularity);
+                json.put("poster_path", poster_path);
+                json.put("original_language",original_language);
+                json.put("original_title", original_title);
+                JSONArray ids = new JSONArray();
+                for(int i : genre_ids){
+                    ids.put(i);
+                }
+                json.put("genre_ids", ids);
+                json.put("backdrop_path",backdrop_path);
+                json.put("adult",adult);
+                json.put("overview",overview);
+                json.put("release_date",release_date);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return json.toString();
+        }
     }
 
     public static class PlayingList{

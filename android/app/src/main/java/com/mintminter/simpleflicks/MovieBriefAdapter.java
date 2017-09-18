@@ -71,6 +71,11 @@ public class MovieBriefAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
+    private void openMovieDetail(MovieContext.Movie movie){
+        Intent detailIntent = new Intent(mContext, MovieDetailActivity.class);
+        detailIntent.putExtra(Common.EXTRA_MOVIE, movie.toString());
+        mContext.startActivity(detailIntent);
+    }
 
     class MovieBriefViewHolder extends RecyclerView.ViewHolder{
 
@@ -106,9 +111,7 @@ public class MovieBriefAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             mItemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent detailIntent = new Intent(mContext, MovieDetailActivity.class);
-                    detailIntent.putExtra(Common.EXTRA_MOVIETITLE, movie.title);
-                    mContext.startActivity(detailIntent);
+                    openMovieDetail(movie);
                 }
             });
         }
@@ -144,6 +147,12 @@ public class MovieBriefAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 @Override
                 public void onClick(View view) {
                     new ApiManager().getTrailer(movie.id, "en_US", mCallback);
+                }
+            });
+            mItemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    openMovieDetail(movie);
                 }
             });
         }

@@ -21,7 +21,6 @@ import com.mintminter.simpleflicks.util.Common;
 
 public class YoutubeActivity extends YouTubeBaseActivity {
     private YouTubePlayerView mYoutubeView;
-    private YouTubePlayer mYoutubePlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,9 +82,4 @@ public class YoutubeActivity extends YouTubeBaseActivity {
 
     }
 
-
-
-    public void onDestroy(){
-        super.onDestroy();
-    }
 }

@@ -304,4 +304,5 @@
     <color name="textH1">@color/grey50</color>
     <color name="textH2">@color/grey100</color>
     <color name="textP">@color/grey200</color>
+    <color name="textSub">@color/grey300</color>
 </resources>
