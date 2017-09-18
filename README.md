@@ -40,7 +40,8 @@ Here's a walkthrough of implemented user stories:
 
 ### Youtube
 
-[![Watch the video](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](http://youtu.be/xL7fi8Fq9g0)
+click to watch:
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=xL7fi8Fq9g0" target="_blank"><img src="http://img.youtube.com/vi/xL7fi8Fq9g0/0.jpg" width="240" height="180" border="10" /></a>
 
 video link: https://photos.app.goo.gl/tCq6gs0sBMhg6XYl1
 
