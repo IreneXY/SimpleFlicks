@@ -38,8 +38,19 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
+### Youtube
+
 [![Watch the video](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](http://youtu.be/xL7fi8Fq9g0)
+
 video link: https://photos.app.goo.gl/tCq6gs0sBMhg6XYl1
+
+### Portrait
+
+<img src='https://github.com/IreneXY/SimpleFlicks/blob/master/android/screenshots/video/portrait.gif' title='Portrait Video Walkthrough' width='' alt='Portrait Video Walkthrough' />
+
+### Landscape
+
+<img src='https://github.com/IreneXY/SimpleFlicks/blob/master/android/screenshots/video/landscape.gif' title='Portrait Video Walkthrough' width='' alt='Portrait Video Walkthrough' />
 
 ## Notes
 
