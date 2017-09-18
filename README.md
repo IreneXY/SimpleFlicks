@@ -38,12 +38,9 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-### Youtube
+### Full
 
-click to watch:
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=xL7fi8Fq9g0" target="_blank"><img src="http://img.youtube.com/vi/xL7fi8Fq9g0/0.jpg" width="240" height="180" border="10" /></a>
-
-video link: https://photos.app.goo.gl/tCq6gs0sBMhg6XYl1
+<img src='https://github.com/IreneXY/SimpleFlicks/blob/master/android/screenshots/video/full.gif' title='Full Video Walkthrough' width='' alt='Full Video Walkthrough' />
 
 ### Portrait
 
@@ -51,7 +48,14 @@ video link: https://photos.app.goo.gl/tCq6gs0sBMhg6XYl1
 
 ### Landscape
 
-<img src='https://github.com/IreneXY/SimpleFlicks/blob/master/android/screenshots/video/landscape.gif' title='Portrait Video Walkthrough' width='' alt='Portrait Video Walkthrough' />
+<img src='https://github.com/IreneXY/SimpleFlicks/blob/master/android/screenshots/video/landscape.gif' title='Landscape Video Walkthrough' width='' alt='Landscape Video Walkthrough' />
+
+### Youtube
+
+click to watch:
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=xL7fi8Fq9g0" target="_blank"><img src="http://img.youtube.com/vi/xL7fi8Fq9g0/0.jpg" width="240" height="180" border="10" /></a>
+
+video link: https://photos.app.goo.gl/tCq6gs0sBMhg6XYl1
 
 ## Notes
 
